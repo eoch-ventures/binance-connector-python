@@ -2,8 +2,8 @@ from binance.websocket.websocket_client import BinanceWebsocketClient
 
 
 class SpotWebsocketClient(BinanceWebsocketClient):
-    def __init__(self, stream_url="wss://stream.binance.com:9443"):
-        super().__init__(stream_url)
+    def __init__(self, stream_url="wss://stream.binance.com:9443", proxy={}):
+        super().__init__(stream_url, proxy)
 
     def agg_trade(self, symbol: str, id: int, callback, **kwargs):
         """Aggregate Trade Streams

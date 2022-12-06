@@ -4,8 +4,8 @@ from binance.websocket.binance_socket_manager import BinanceSocketManager
 
 
 class BinanceWebsocketClient(BinanceSocketManager):
-    def __init__(self, stream_url):
-        super().__init__(stream_url)
+    def __init__(self, stream_url, proxy):
+        super().__init__(stream_url, proxy)
 
     def stop(self):
         try:
