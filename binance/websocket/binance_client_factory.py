@@ -12,12 +12,14 @@ class BinanceReconnectingClientFactory(ReconnectingClientFactory):
 
 
 class BinanceClientFactory(WebSocketClientFactory, BinanceReconnectingClientFactory):
-    def __init__(self, *args, payload=None, **kwargs):
+    def __init__(self, *args, payload=None, proxy, **kwargs):
         WebSocketClientFactory.__init__(self, *args, **kwargs)
         self.protocol_instance = None
         self.base_client = None
         self.payload = payload
         self._logger = logging.getLogger(__name__)
+        if len(proxy) > 0:
+            self.proxy = proxy
 
     _reconnect_error_payload = {"e": "error", "m": "Max reconnect retries reached"}
 
